@@ -1,0 +1,135 @@
+/* Body styles */
+body {
+  font-family: 'Arial', sans-serif;
+  /* background: linear-gradient(to right, #f06, #4a90e2); */
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  margin: 0;
+}
+
+/* Container for authentication elements */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%; /* Full viewport width */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Authentication box */
+.auth-box {
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+  width: 100%;
+  max-width: 500px; /* Maximum width for better readability */
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Animation for auth box */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Heading styles */
+h1 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 2rem;
+}
+
+/* Form group styles */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Label styles */
+label {
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: bold;
+}
+
+/* Form control styles */
+.form-control {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  width: 100%; /* Full width input */
+  box-sizing: border-box;
+}
+
+/* Focus state for form control */
+.form-control:focus {
+  border-color: #4a90e2;
+  outline: none;
+  box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+}
+
+/* Button styles */
+.auth-button, .toggle-button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #4a90e2;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+  width: 100%; /* Full width button */
+  margin-top: 10px;
+}
+
+/* Hover state for buttons */
+.auth-button:hover, .toggle-button:hover {
+  background: #357ab8;
+  transform: translateY(-2px);
+}
+
+/* Active state for buttons */
+.auth-button:active, .toggle-button:active {
+  background: #2b5c8a;
+  transform: translateY(0);
+}
+
+/* Error message styles */
+.error {
+  color: red;
+  font-size: 0.875rem;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .auth-box {
+      padding: 20px;
+  }
+
+  h1 {
+      font-size: 1.5rem;
+  }
+
+  .form-control {
+      font-size: 0.875rem;
+  }
+
+  .auth-button, .toggle-button {
+      font-size: 0.875rem;
+  }
+}

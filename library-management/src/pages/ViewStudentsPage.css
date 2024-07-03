@@ -1,0 +1,103 @@
+.view-students-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.view-students-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4CAF50;
+  font-size: 2.5em;
+  font-weight: bold;
+  animation: slideDown 1s ease-in-out;
+}
+
+.view-students-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.view-students-container th,
+.view-students-container td {
+  padding: 12px;
+  text-align: left;
+}
+
+.view-students-container th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.view-students-container td {
+  background-color: #ffffff;
+  color: #666;
+}
+
+.view-students-container tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.view-students-container img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  transition: transform 0.3s ease;
+}
+
+.view-students-container img:hover {
+  transform: scale(1.1);
+}
+
+.view-students-container .delete-button {
+  padding: 8px 16px;
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-students-container .delete-button:hover {
+  background-color: #d32f2f;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.delete-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #ff1a1a;
+}

@@ -1,0 +1,81 @@
+.left-navbar {
+  background-color: #444;
+  height: 100vh;
+  width: 200px;
+  position: fixed;
+  top: 10%; /* Ensure it starts from the top */
+  left: 0;
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 999;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s, background-color 0.3s;
+}
+
+/* Optional: Customize the scrollbar */
+.left-navbar::-webkit-scrollbar {
+  width: 28px; /* Width of the scrollbar */
+}
+
+.left-navbar::-webkit-scrollbar-thumb {
+  background-color: #666; /* Color of the scrollbar thumb */
+  border-radius: 50px; /* Round the corners of the scrollbar thumb */
+}
+
+.left-navbar::-webkit-scrollbar-track {
+  background-color: #444; /* Color of the scrollbar track */
+}
+
+.nav-content {
+  margin-top: 100px; /* Adjusted space for the top navbar */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align items at the top */
+  flex-grow: 1;
+  width: 100%;
+}
+
+.left-navbar ul {
+  list-style: none;
+  padding: 10; /* Removed padding to avoid additional space */
+  margin: 50; /* Removed margin to avoid additional space */
+  width: 100%;
+}
+
+.left-navbar ul li {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.left-navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.75rem 2rem;
+  display: block;
+  width: 100%;
+  text-align: center;
+  border-radius: 20px;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.left-navbar ul li a:hover,
+.left-navbar ul li a.active {
+  background-color: #666;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .left-navbar {
+    width: 100px;
+  }
+
+  .left-navbar ul li a {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+}

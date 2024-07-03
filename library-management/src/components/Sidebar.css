@@ -1,0 +1,24 @@
+/* src/components/Sidebar.css */
+aside {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 1rem;
+  }
+  
+  aside nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  aside nav ul li {
+    margin-bottom: 1rem;
+  }
+  
+  aside nav ul li a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  
+  
