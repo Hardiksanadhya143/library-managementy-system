@@ -10,7 +10,7 @@ router.get('/total-students', async (req, res) => {
     const totalStudents = await Student.countDocuments();
     res.status(200).json({ total: totalStudents });
   } catch (error) {
-    console.error('Error fetching total students:', error.message);
+    console.error('Error fetching total students fjfj:', error.message);
     res.status(500).json({ message: 'Server error' });
   }
 });
