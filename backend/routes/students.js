@@ -86,6 +86,18 @@ router.put('/:id', upload.single('photo'), async (req, res) => {
   }
 });
 
+//count total student
+
+app.get('/api/total-students', async (req, res) => {
+  try {
+    const count = await Student.countDocuments();
+    res.json({ totalStudents: count });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 // GET all students
 router.get('/', async (req, res) => {
   try {

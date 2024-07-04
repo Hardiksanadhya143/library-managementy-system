@@ -1,7 +1,8 @@
 /* Body styles */
 body {
   font-family: 'Arial', sans-serif;
-  /* background: linear-gradient(to right, #f06, #4a90e2); */
+  background: url('h.jpeg') no-repeat center center fixed; /* Change this URL to your image */
+  background-size: cover; /* Ensures the background covers the entire viewport */
   /* display: flex; */
   justify-content: center;
   align-items: center;

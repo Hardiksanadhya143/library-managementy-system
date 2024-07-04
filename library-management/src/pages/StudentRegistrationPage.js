@@ -4,8 +4,11 @@ import Layout from '../components/Layout';
 import './StudentRegistrationPage.css';
 
 const StudentRegistrationPage = ({ refreshStudents }) => {
+  const generateRandomId = () => {
+    return 'MLSU-' + Math.floor(Math.random() * 1000000);
+  };
   const [formData, setFormData] = useState({
-    studentId: '',
+    studentId:generateRandomId(),
     studentName: '',
     fatherName: '',
     motherName: '',
@@ -102,6 +105,7 @@ const StudentRegistrationPage = ({ refreshStudents }) => {
             <label htmlFor="studentId">Student ID</label>
             <input
               type="text"
+              readOnly
               id="studentId"
               name="studentId"
               value={formData.studentId}
