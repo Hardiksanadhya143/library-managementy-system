@@ -4,57 +4,39 @@ import Layout from '../components/Layout';
 import './HomePage.css';
 
 const HomePage = () => {
-  const [totalStudents, setTotalStudents] = useState(0);
-  const [totalBooks, setTotalBooks] = useState(0);
+  const [totalStudents, setTotalStudents] = useState("");
+  const [totalBooks, setTotalBooks] = useState("");
   const [totalIssuedBooks, setTotalIssuedBooks] = useState(0);
 
-  const fetchTotals = async () => {
-    try {
-      const [studentsResponse, booksResponse, issuedBooksResponse] = await Promise.all([
-        axios.get('http://localhost:5000/api/total-students'),
-        axios.get('http://localhost:5000/api/total-books'),
-        axios.get('http://localhost:5000/api/total-issued-books')
-      ]);
+ 
 
-      setTotalStudents(studentsResponse.data.total);
-      setTotalBooks(booksResponse.data.total);
-      setTotalIssuedBooks(issuedBooksResponse.data.total);
-    } catch (error) {
-      console.error('Error fetching totals:', error);
-    }
-  };
 
   useEffect(() => {
-    fetchTotals();
+//    fetchTotals();
+    fetchStudentcount(); 
+    fetchBookcount();
   }, []);
 
-  // Define functions to update totals after adding a student, book, or issuing a book
-  const handleAddStudent = async (newStudent) => {
+  const fetchStudentcount = async () => {
     try {
-      await axios.post('http://localhost:5000/api/students', newStudent);
-      fetchTotals();
+      const response = await axios.get('http://localhost:5000/api/students/total-students');
+      setTotalStudents(response.data.totalStudents);
     } catch (error) {
-      console.error('Error adding student:', error);
     }
   };
 
-  const handleAddBook = async (newBook) => {
+  
+  const fetchBookcount = async () => {
     try {
-      await axios.post('http://localhost:5000/api/books', newBook);
-      fetchTotals();
+      const response = await axios.get('http://localhost:5000/api/books/total-books');
+      setTotalBooks(response.data.totalBooks);
     } catch (error) {
-      console.error('Error adding book:', error);
     }
   };
 
-  const handleIssueBook = async (issuedBook) => {
-    try {
-      await axios.post('http://localhost:5000/api/issuedbooks/issue', issuedBook);
-      fetchTotals();
-    } catch (error) {
-      console.error('Error issuing book:', error);
-    }
-  };
+  
+
+
 
   return (
     <Layout>

@@ -15,6 +15,16 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+//total book issued
+router.get('/total-books', async (req, res) => {
+  try {
+    const count = await Book.countDocuments();
+    res.json({ totalBook: count });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
 // POST a new book
 router.post('/', upload.single('coverImage'), async (req, res) => {
   try {

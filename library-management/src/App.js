@@ -9,6 +9,7 @@ import AddBooksPage from './pages/AddBooks';
 import ViewBooksPage from './pages/ViewBooksPage';
 import IssuedBooksPage from './pages/IssuedBooksPage';
 import Logout from './pages/Logout';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import AuthPage from './pages/AuthPage';

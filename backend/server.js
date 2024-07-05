@@ -25,6 +25,8 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/user', userRoutes);
 app.use('/api/books', bookRoutes);
 app.use('/api/students', studentRoutes);
+// app.use('api/total-students',studentRoutes)
+
 app.use('/api/issuedbooks', issuedBookRoutes);
 
 

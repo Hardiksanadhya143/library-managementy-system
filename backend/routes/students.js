@@ -88,7 +88,7 @@ router.put('/:id', upload.single('photo'), async (req, res) => {
 
 //count total student
 
-app.get('/api/total-students', async (req, res) => {
+router.get('/total-students', async (req, res) => {
   try {
     const count = await Student.countDocuments();
     res.json({ totalStudents: count });
