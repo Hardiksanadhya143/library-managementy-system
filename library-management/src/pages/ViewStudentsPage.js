@@ -42,13 +42,14 @@ const ViewStudentsPage = () => {
     filterStudents(e.target.value);
   };
 
-  // Function to filter students based on student ID
+  // Function to filter students based on student ID or name
   const filterStudents = (term) => {
     if (!term) {
       setFilteredStudents(students); // Reset to show all students when search term is empty
     } else {
       const filtered = students.filter((student) =>
-        student.studentId.toLowerCase().includes(term.toLowerCase())
+        student.studentId.toLowerCase().includes(term.toLowerCase()) ||
+        student.studentName.toLowerCase().includes(term.toLowerCase())
       );
       setFilteredStudents(filtered);
     }
@@ -66,7 +67,8 @@ const ViewStudentsPage = () => {
       const sortedUpdatedStudents = sortStudents(updatedStudents);
       setStudents(sortedUpdatedStudents);
       setFilteredStudents(sortedUpdatedStudents.filter((student) =>
-        student.studentId.toLowerCase().includes(searchTerm.toLowerCase())
+        student.studentId.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        student.studentName.toLowerCase().includes(searchTerm.toLowerCase())
       ));
       setIsModalOpen(false);
     } catch (error) {
@@ -97,7 +99,7 @@ const ViewStudentsPage = () => {
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search by Student ID..."
+            placeholder="Search by Student ID or Name..."
             value={searchTerm}
             onChange={handleSearchChange}
           />

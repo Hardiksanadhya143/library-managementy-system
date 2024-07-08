@@ -1,0 +1,84 @@
+/* TrendingBooks.css */
+
+.trending-books {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .trending-books h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .book-card {
+    padding: 10px;
+    text-align: center;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 350px; /* Adjust height as needed */
+  }
+  
+  .book-cover {
+    width: 150px; /* Set a fixed width */
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Ensures the image covers the entire area while maintaining aspect ratio */
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .book-card h3 {
+    font-size: 18px;
+    margin: 10px 0 0; /* Remove bottom margin to reduce space */
+  }
+  
+  .book-card p {
+    font-size: 16px;
+    color: #777;
+    margin: 0; /* Remove margin to reduce space */
+  }
+  
+  /* Custom Arrow Styles */
+  .slick-prev:before, .slick-next:before {
+    color: black;
+  }
+  
+  .slick-prev, .slick-next {
+    width: 30px;
+    height: 30px;
+    z-index: 1;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.3s;
+  }
+  
+  .slick-prev:hover, .slick-next:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.1);
+  }
+  
+  .slick-prev:before, .slick-next:before {
+    color: #000;
+    font-size: 20px;
+  }
+  
+  /* Custom Arrow Position */
+  .slick-prev {
+    left: -40px;
+  }
+  
+  .slick-next {
+    right: -40px;
+  }
+  

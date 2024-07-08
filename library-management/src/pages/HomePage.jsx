@@ -2,65 +2,60 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Layout from '../components/Layout';
 import './HomePage.css';
+import TrendingBooks from '../components/TrendingBooks';
+
+const StatCard = ({ title, count, icon }) => (
+  <div className="card">
+    <h3>{title}</h3>
+    <p>{count}</p>
+    <img src={icon} alt={title} className="icon"/>
+  </div>
+);
 
 const HomePage = () => {
-  const [totalStudents, setTotalStudents] = useState("");
-  const [totalBooks, setTotalBooks] = useState("");
-  const [totalIssuedBooks, setTotalIssuedBooks] = useState("");
+  const [totalStudents, setTotalStudents] = useState(null);
+  const [totalBooks, setTotalBooks] = useState(null);
+  const [totalIssuedBooks, setTotalIssuedBooks] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchStudentcount();
-    fetchBookcount();
-    fetchIssuedBookcount();
+    fetchCounts();
   }, []);
 
-  const fetchStudentcount = async () => {
+  const fetchCounts = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/students/total-students');
-      setTotalStudents(response.data.totalStudents);
+      const [studentsResponse, booksResponse, issuedBooksResponse] = await Promise.all([
+        axios.get('http://localhost:5000/api/students/total-students'),
+        axios.get('http://localhost:5000/api/books/total-books'),
+        axios.get('http://localhost:5000/api/issuedbooks/total-issued-books'),
+      ]);
+      setTotalStudents(studentsResponse.data.totalStudents);
+      setTotalBooks(booksResponse.data.totalBooks);
+      setTotalIssuedBooks(issuedBooksResponse.data.totalIssuedBooks);
+      setLoading(false);
     } catch (error) {
-      console.error("Error fetching total students:", error);
+      setError("Failed to fetch data");
+      setLoading(false);
     }
   };
 
-  const fetchBookcount = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/api/books/total-books');
-      setTotalBooks(response.data.totalBooks);
-    } catch (error) {
-      console.error("Error fetching total books:", error);
-    }
-  };
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  const fetchIssuedBookcount = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/api/issuedbooks/total-issued-books');
-      console.log("Total Issued Books Response:", response.data);
-      setTotalIssuedBooks(response.data.totalIssuedBooks);
-    } catch (error) {
-      console.error("Error fetching total issued books:", error);
-    }
-  };
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <Layout>
       <div className="home-page">
-        <div className="card">
-          <h3>Total Students</h3>
-          <p>{totalStudents}</p>
-          <img src="s.png" alt="Students" className="icon"/>
-        </div>
-        <div className="card">
-          <h3>Total Books</h3>
-          <p>{totalBooks}</p>
-          <img src="ss.png" alt="Books" className="icon"/>
-        </div>
-        <div className="card">
-          <h3>Total Issued Books</h3>
-          <p>{totalIssuedBooks}</p>
-          <img src="sss.png" alt="Issued Books" className="icon"/>
-        </div>
+        <StatCard title="Total Students" count={totalStudents} icon="s.png" />
+        <StatCard title="Total Books" count={totalBooks} icon="ss.png" />
+        <StatCard title="Total Issued Books" count={totalIssuedBooks} icon="sss.png" />
       </div>
+      <TrendingBooks />
     </Layout>
   );
 };

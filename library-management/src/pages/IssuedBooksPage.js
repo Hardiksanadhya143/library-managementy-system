@@ -35,13 +35,14 @@ const IssuedBooksPage = () => {
     filterBooks(e.target.value);
   };
 
-  // Function to filter books based on student ID
+  // Function to filter books based on student ID or name
   const filterBooks = (term) => {
     if (!term) {
       setFilteredBooks(issuedBooks); // Reset to show all books when search term is empty
     } else {
       const filtered = issuedBooks.filter((book) =>
-        book.student && book.student.studentId.toLowerCase().includes(term.toLowerCase())
+        (book.student && book.student.studentId.toLowerCase().includes(term.toLowerCase())) ||
+        (book.student && book.student.studentName.toLowerCase().includes(term.toLowerCase()))
       );
       setFilteredBooks(filtered);
     }
@@ -88,7 +89,7 @@ const IssuedBooksPage = () => {
         <div className="search-container">
           <input
             type="text"
-            placeholder="Search by Student ID..."
+            placeholder="Search by Student ID or Name..."
             value={searchTerm}
             onChange={handleSearchChange}
           />
@@ -96,6 +97,7 @@ const IssuedBooksPage = () => {
         <table>
           <thead>
             <tr>
+              <th>Serial No.</th>
               <th>Student ID</th>
               <th>Student Name</th>
               <th>Book Name</th>
@@ -105,13 +107,14 @@ const IssuedBooksPage = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredBooks.map((issuedBook) => {
+            {filteredBooks.map((issuedBook, index) => {
               // Check if student and book data exists
               if (!issuedBook.student || !issuedBook.book) {
                 return null; // Skip rendering this row
               }
               return (
                 <tr key={issuedBook._id}>
+                  <td>{index + 1}</td> {/* Serial Number */}
                   <td>{issuedBook.student.studentId}</td>
                   <td>{issuedBook.student.studentName}</td>
                   <td>{issuedBook.book.title}</td>

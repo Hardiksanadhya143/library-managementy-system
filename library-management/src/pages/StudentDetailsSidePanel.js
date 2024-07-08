@@ -8,6 +8,24 @@ const StudentDetailsSidePanel = ({ studentDetails, onClose, onIssue }) => {
   const [successMessage, setSuccessMessage] = useState('');
 
   const handleIssue = async () => {
+    const issue = new Date(issueDate);
+    const returnD = new Date(returnDate);
+
+    // Validation: Issue date should be before return date
+    if (issue >= returnD) {
+      setSuccessMessage('Issue date must be before return date.');
+      return;
+    }
+
+    // Validation: Gap between issue date and return date should not be more than one month
+    const oneMonthLater = new Date(issue);
+    oneMonthLater.setMonth(issue.getMonth() + 1);
+
+    if (returnD > oneMonthLater) {
+      setSuccessMessage('The gap between issue date and return date cannot be more than one month.');
+      return;
+    }
+
     try {
       await axios.post('http://localhost:5000/api/issuedbooks/issue', {
         bookId: studentDetails.book._id,

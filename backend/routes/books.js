@@ -46,6 +46,17 @@ router.post('/', upload.single('coverImage'), async (req, res) => {
   }
 });
 
+router.get('/trending', async (req, res) => {
+  try {
+    // This is a simple example. You can define what makes a book "trending"
+    const trendingBooks = await Book.find().sort({ issueCount: -1 }).limit(10); // Sort by issueCount and limit to 10 books
+    res.json({ trendingBooks });
+  } catch (error) {
+    console.error("Error fetching trending books:", error);
+    res.status(500).json({ message: "Error fetching trending books" });
+  }
+});
+
 router.post('/issue', async (req, res) => {
   const { bookId, studentId, issueDate, returnDate } = req.body;
   try {
