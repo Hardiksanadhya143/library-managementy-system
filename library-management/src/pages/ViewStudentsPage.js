@@ -144,14 +144,13 @@ const ViewStudentsPage = () => {
           </tbody>
         </table>
       </div>
-      {isModalOpen && (
-        <Modal
-          message="Are you sure you want to delete this student?"
-          onConfirm={handleConfirmDelete}
-          onCancel={handleCancelDelete}
-          title="Confirm Delete"
-        />
-      )}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleCancelDelete}
+        onConfirm={handleConfirmDelete}
+        title="Confirm Delete"
+        message="Are you sure you want to delete this student?"
+      />
     </Layout>
   );
 };

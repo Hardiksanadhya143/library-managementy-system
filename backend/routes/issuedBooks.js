@@ -27,7 +27,8 @@ router.post('/issue', async (req, res) => {
       book: book._id,
       student: student._id,
       issueDate: new Date(issueDate),
-      returnDate: new Date(returnDate)
+      returnDate: new Date(returnDate),
+      isIssued: true 
     });
 
     await issuedBook.save();
@@ -38,6 +39,20 @@ router.post('/issue', async (req, res) => {
     res.status(500).send('Internal server error');
   }
 });
+
+
+// API endpoint to count total issued books
+router.get('/total-issued-books', async (req, res) => {
+  try {
+    const count = await IssuedBook.countDocuments();
+    console.log("Total Issued Books Count:", count);  // Add logging
+    res.json({ "totalIssuedBooks": count });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 
 // Get all issued books
 router.get('/', async (req, res) => {

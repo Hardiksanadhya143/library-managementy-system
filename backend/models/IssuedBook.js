@@ -17,6 +17,7 @@ const issuedBookSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  isIssued: { type: Boolean, default: true },    
   returnDate: {
     type: Date,
     required: true,

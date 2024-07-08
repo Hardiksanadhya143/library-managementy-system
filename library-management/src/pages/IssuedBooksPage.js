@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './styles.css';
 import Layout from '../components/Layout';
 import './IssuedBooksPage.css';
-import Modal from '../components/Modall';
+import Modal from '../components/Modal';
 
 const IssuedBooksPage = () => {
   const [issuedBooks, setIssuedBooks] = useState([]);
@@ -132,9 +132,8 @@ const IssuedBooksPage = () => {
         onClose={closeModal}
         onConfirm={handleReturnBook}
         title="Confirm Return"
-      >
-        <p>Are you sure you want to return this book?</p>
-      </Modal>
+        message="Are you sure you want to return this book?"
+      />
     </Layout>
   );
 };

@@ -1,41 +1,72 @@
-/* Modal.css */
-
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .modal-container {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .modal-actions {
-    margin-top: 20px;
-  }
-  
-  .modal-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 0 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .modal-button:hover {
-    background-color: #0056b3;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6); /* Slightly darker background for better contrast */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure the modal is on top of other elements */
+  backdrop-filter: blur(5px); /* Apply blur effect to the background */
+}
+
+.modal-container {
+  background: #fff;
+  padding: 30px; /* Increase padding for a more spacious look */
+  border-radius: 12px; /* Larger border radius for smoother edges */
+  width: 350px; /* Slightly wider for better content fit */
+  max-width: 90%; /* Ensure it fits on smaller screens */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); /* Add depth with shadow */
+  text-align: center;
+  transition: transform 0.3s ease-in-out; /* Smooth animation on open */
+  transform: scale(0.95); /* Start slightly smaller */
+}
+
+.modal-container.show {
+  transform: scale(1); /* Scale to full size */
+}
+
+.modal-header {
+  font-size: 1.5em; /* Larger font for the header */
+  margin-bottom: 15px;
+  font-weight: bold;
+  color: #333; /* Darker text color for contrast */
+}
+
+.modal-message {
+  font-size: 1em;
+  margin-bottom: 20px;
+  color: #555; /* Slightly lighter text for message */
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px; /* Add gap between buttons */
+  margin-top: 20px;
+}
+
+.modal-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  flex: 1; /* Make buttons grow to fit available space */
+  transition: background 0.3s ease; /* Smooth transition on hover */
+}
+
+.modal-button:hover {
+  background: #0056b3;
+}
+
+.modal-button.cancel {
+  background: #6c757d;
+}
+
+.modal-button.cancel:hover {
+  background: #5a6268;
+}

@@ -19,7 +19,7 @@ const upload = multer({ storage });
 router.get('/total-books', async (req, res) => {
   try {
     const count = await Book.countDocuments();
-    res.json({ totalBook: count });
+    res.json({ totalBooks: count });
   } catch (err) {
     console.error(err);
     res.status(500).send('Internal Server Error');

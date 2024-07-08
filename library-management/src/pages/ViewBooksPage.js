@@ -53,6 +53,7 @@ const ViewBooksPage = () => {
     try {
       await axios.delete(`http://localhost:5000/api/books/${selectedBookId}`);
       setBooks(books.filter((book) => book._id !== selectedBookId));
+      setFilteredBooks(filteredBooks.filter((book) => book._id !== selectedBookId));
       setIsModalOpen(false);
     } catch (error) {
       console.error('There was an error deleting the book!', error);
@@ -168,14 +169,13 @@ const ViewBooksPage = () => {
           ))}
         </ul>
       </div>
-      {isModalOpen && (
-        <Modal
-          message="Are you sure you want to delete this book?"
-          onConfirm={handleConfirmDelete}
-          onCancel={handleCancelDelete}
-          title="Confirm delete"
-        />
-      )}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleCancelDelete}
+        onConfirm={handleConfirmDelete}
+        title="Confirm delete"
+        message="Are you sure you want to delete this book?"
+      />
       {isSidePanelOpen && (
         <div className={`student-details-side-panel ${isSidePanelOpen ? 'open' : ''}`}>
           <button className="close-button" onClick={handleSidePanelClose}>X</button>
