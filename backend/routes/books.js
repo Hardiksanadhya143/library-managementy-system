@@ -57,6 +57,41 @@ router.get('/trending', async (req, res) => {
   }
 });
 
+// Example Node.js/Express endpoint for horror books
+
+
+
+// Example route to fetch horror books
+router.get('/horror', async (req, res) => {
+  try {
+    const horrorBooks = await Book.find({ genre: 'Horror' }).exec();
+    res.json({ horrorBooks });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch horror books' });
+  }
+});
+
+// In books.js (backend route file)
+router.get('/adventure', async (req, res) => {
+  try {
+    const adventureBooks = await Book.find({ genre: 'Adventure' }).exec();
+    res.json({adventureBooks});
+  } catch (error) {
+    res.status(500).json({ message: 'Failed to fetch adventure books' });
+  }
+});
+
+
+router.get('/devotional', async (req, res) => {
+  try {
+    const devotionalBooks = await Book.find({ genre: 'Devotional' }).exec();
+    res.json({ devotionalBooks });
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching devotional books', error });
+  }
+});
+
+
 router.post('/issue', async (req, res) => {
   const { bookId, studentId, issueDate, returnDate } = req.body;
   try {
