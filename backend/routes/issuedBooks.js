@@ -45,7 +45,7 @@ router.post('/issue', async (req, res) => {
 router.get('/total-issued-books', async (req, res) => {
   try {
     const count = await IssuedBook.countDocuments();
-    console.log("Total Issued Books Count:", count);  // Add logging
+   
     res.json({ "totalIssuedBooks": count });
   } catch (err) {
     console.error(err);

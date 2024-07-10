@@ -1,11 +1,9 @@
-/* styles.css */
-
-/* Container styles */
+/* General container styles */
 .view-books-container,
 .issued-books-container {
   padding: 20px;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 20px auto;
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -26,11 +24,16 @@ li {
   padding-bottom: 20px;
 }
 
+li:last-child {
+  border-bottom: none;
+}
+
 img {
   width: 100px;
   height: 150px;
   object-fit: cover;
   margin-right: 20px;
+  border-radius: 8px;
 }
 
 .issue-button {
@@ -40,6 +43,7 @@ img {
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
+  transition: background-color 0.3s ease;
   margin-top: 10px;
 }
 
@@ -55,10 +59,11 @@ img {
 
 .quantity-control button {
   background-color: #f0f0f0;
-  border: 1px solid #cccccc;
+  border: 1px solid black;
   padding: 5px 10px;
   cursor: pointer;
   border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .quantity-control button:hover {
@@ -67,6 +72,7 @@ img {
 
 .quantity-control span {
   margin: 0 10px;
+  font-weight: bold;
 }
 
 .student-details-side-panel {
@@ -81,6 +87,8 @@ img {
   padding: 20px;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
+  overflow-y: auto;
+  z-index: 1000;
 }
 
 .student-details-side-panel.open {
@@ -95,4 +103,77 @@ img {
   position: absolute;
   top: 10px;
   right: 10px;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #000;
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+}
+
+.modal-header,
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.modal-footer {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 10px;
+}
+
+.modal-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.modal-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-button:hover {
+  background-color: #0056b3;
+}
+
+.modal-button.cancel {
+  background-color: #6c757d;
+}
+
+.modal-button.cancel:hover {
+  background-color: #5a6268;
 }

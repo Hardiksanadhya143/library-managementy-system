@@ -30,7 +30,8 @@ const ViewBooksPage = () => {
     } else {
       const filtered = books.filter(book =>
         book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        book.author.toLowerCase().includes(searchTerm.toLowerCase())
+        book.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        book.genre.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredBooks(filtered);
     }
@@ -145,7 +146,7 @@ const ViewBooksPage = () => {
         <h1>View Books</h1>
         <input
           type="text"
-          placeholder="Search by book name or author"
+          placeholder="Search by book name, author or genre"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />

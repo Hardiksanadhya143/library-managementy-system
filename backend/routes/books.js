@@ -59,7 +59,14 @@ router.get('/trending', async (req, res) => {
 
 // Example Node.js/Express endpoint for horror books
 
-
+router.get('/education', async (req, res) => {
+  try {
+    const educationBooks = await Book.find({ genre: 'Education' }).exec();
+    res.json({ educationBooks });
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching education books', error });
+  }
+});
 
 // Example route to fetch horror books
 router.get('/horror', async (req, res) => {
