@@ -5,9 +5,9 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './AuthPage.css';
 
-
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
   const loginFormik = useFormik({
@@ -22,6 +22,7 @@ const AuthPage = () => {
         localStorage.setItem('profile', JSON.stringify(data));
         navigate('/home');
       } catch (error) {
+        setErrorMessage('Invalid username or password');
         console.error(error);
       }
     },
@@ -52,6 +53,7 @@ const AuthPage = () => {
         localStorage.setItem('profile', JSON.stringify(data));
         setIsLogin(true);
       } catch (error) {
+        setErrorMessage('Signup failed. Please try again.');
         console.error(error);
       }
     },
@@ -61,6 +63,7 @@ const AuthPage = () => {
     <div className="auth-container">
       <div className={`auth-box ${isLogin ? 'login' : 'signup'}`}>
         <h1>{isLogin ? 'Login' : 'Signup'}</h1>
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
         <form onSubmit={isLogin ? loginFormik.handleSubmit : signupFormik.handleSubmit}>
           {!isLogin && (
             <>

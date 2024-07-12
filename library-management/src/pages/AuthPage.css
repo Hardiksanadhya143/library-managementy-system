@@ -8,6 +8,33 @@ body {
   align-items: center;
   height: 100vh; /* Full viewport height */
   margin: 0;
+  overflow-y: scroll; /* Ensure scrollbars are visible */
+}
+
+/* Custom scrollbar styles for WebKit browsers */
+body::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Background color of the scrollbar track */
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Roundness of the scrollbar thumb */
+  border: 3px solid #f1f1f1; /* Space around the scrollbar thumb */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color when hovered */
+}
+
+/* For Firefox */
+body {
+  scrollbar-width: thin; /* Width of the scrollbar */
+  scrollbar-color: #888 #f1f1f1; /* Color of the scrollbar thumb and track */
 }
 
 /* Container for authentication elements */
@@ -37,12 +64,12 @@ body {
 /* Animation for auth box */
 @keyframes fadeIn {
   from {
-      opacity: 0;
-      transform: translateY(-10px);
+    opacity: 0;
+    transform: translateY(-10px);
   }
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -50,7 +77,7 @@ body {
 h1 {
   margin-bottom: 20px;
   color: #333;
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 /* Form group styles */
@@ -116,21 +143,28 @@ label {
   font-size: 0.875rem;
 }
 
+/* New error-message class for server-side error message */
+.error-message {
+  color: red;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
 /* Responsive design */
 @media (max-width: 600px) {
   .auth-box {
-      padding: 20px;
+    padding: 20px;
   }
 
   h1 {
-      font-size: 1.5rem;
+    font-size: 1.5rem;
   }
 
   .form-control {
-      font-size: 0.875rem;
+    font-size: 0.875rem;
   }
 
   .auth-button, .toggle-button {
-      font-size: 0.875rem;
+    font-size: 0.875rem;
   }
 }

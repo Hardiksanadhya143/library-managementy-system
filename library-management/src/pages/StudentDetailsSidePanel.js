@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styles.css';
 
@@ -6,6 +6,15 @@ const StudentDetailsSidePanel = ({ studentDetails, onClose, onIssue }) => {
   const [issueDate, setIssueDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const [isFormIncomplete, setIsFormIncomplete] = useState(true);
+
+  useEffect(() => {
+    if (issueDate && returnDate) {
+      setIsFormIncomplete(false);
+    } else {
+      setIsFormIncomplete(true);
+    }
+  }, [issueDate, returnDate]);
 
   const handleIssue = async () => {
     const issue = new Date(issueDate);
@@ -66,6 +75,7 @@ const StudentDetailsSidePanel = ({ studentDetails, onClose, onIssue }) => {
           </div>
           <button className="issue-button" onClick={handleIssue}>Issue Book</button>
           {successMessage && <p className="success-message">{successMessage}</p>}
+          {isFormIncomplete && <p className="error">Please fill in the issue and return dates</p>}
         </div>
       ) : (
         <div>

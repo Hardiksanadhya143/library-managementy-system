@@ -164,7 +164,7 @@ const ViewBooksPage = () => {
                   <span>{book.quantity}</span>
                   <button onClick={() => handleIncrement(book._id)}>+</button>
                 </div>
-                <button onClick={() => handleDeleteClick(book._id)}>Delete</button>
+                <button className='delete-button ' onClick={() => handleDeleteClick(book._id)}>Delete</button>
                 <button className="issue-button" onClick={() => handleIssueClick(book)}>Issue</button>
               </div>
             </li>

@@ -2,20 +2,28 @@
 .registration-container {
   padding: 20px;
   max-width: 600px;
-  margin: 0 auto;
-  background-color: #ffffff;
+  margin: 50px auto;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
   border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  overflow-y: auto; /* Add scrollbar for overflow content */
-  max-height: 80vh; /* Set a maximum height to ensure the container is scrollable */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  max-height: 80vh;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.registration-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 /* Heading styles */
 h1 {
   text-align: center;
   margin-bottom: 20px;
+  font-size: 28px;
   color: #333333;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Form styles */
@@ -23,7 +31,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding-bottom: 20px; /* Add padding to the bottom to ensure space for the submit button */
+  padding-bottom: 20px;
 }
 
 /* Form group styles */
@@ -36,6 +44,8 @@ form {
 label {
   margin-bottom: 5px;
   color: #666666;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
 }
 
 /* Input styles */
@@ -46,9 +56,18 @@ input[type="file"] {
   padding: 10px;
   font-size: 1rem;
   border: 1px solid #cccccc;
-  border-radius: 4px;
-  width: 100%; /* Ensure inputs take up the full width of the container */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus,
+input[type="file"]:focus {
+  border-color: #4CAF50;
+  outline: none;
 }
 
 /* Error message styles */
@@ -56,6 +75,7 @@ input[type="file"] {
   color: #cc0000;
   font-size: 0.9rem;
   margin-top: 5px;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Submit button styles */
@@ -65,14 +85,21 @@ button[type="submit"] {
   border: none;
   padding: 12px 24px;
   cursor: pointer;
-  border-radius: 5px;
-  align-self: flex-start;
-  transition: background-color 0.3s ease;
-  margin-bottom: 20px; /* Add margin to the bottom to ensure proper spacing */
+  border-radius: 8px;
+  align-self: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  width: 100%;
 }
 
 button[type="submit"]:hover {
   background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+  transform: translateY(1px);
 }
 
 /* Popup styles */
@@ -81,13 +108,15 @@ button[type="submit"]:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #ffcccc;
-  color: #cc0000;
-  border: 1px solid #cc0000;
+  background-color: #e6ffe6;
+  color: #2d862d;
+  border: 1px solid #2d862d;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
   text-align: center;
+  border-radius: 12px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .popup-overlay {

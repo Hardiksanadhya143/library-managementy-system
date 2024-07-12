@@ -1,75 +1,97 @@
+/* Container Styling */
 .view-students-container {
   max-width: 1200px;
   margin: 20px auto;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  background: linear-gradient(to bottom right, #ffffff, #f9f9f9);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   animation: fadeIn 1s ease-in-out;
 }
 
+/* Header Styling */
 .view-students-container h1 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   color: #4CAF50;
-  font-size: 2.5em;
+  font-size: 3em;
   font-weight: bold;
+  letter-spacing: 2px;
   animation: slideDown 1s ease-in-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Table Styling */
 .view-students-container table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .view-students-container th,
 .view-students-container td {
-  padding: 12px;
+  padding: 15px;
   text-align: left;
+  border-bottom: 1px solid #dddddd;
 }
 
 .view-students-container th {
-  background-color: #f2f2f2;
-  color: #333;
+  background-color: #4CAF50;
+  color: #ffffff;
+  font-weight: bold;
+  border-bottom: 2px solid #ffffff;
 }
 
 .view-students-container td {
   background-color: #ffffff;
-  color: #666;
+  color: #333;
+  transition: background-color 0.3s ease;
 }
 
 .view-students-container tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #f2f2f2;
 }
 
+.view-students-container tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Image Styling */
 .view-students-container img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid #ccc;
-  transition: transform 0.3s ease;
+  border: 3px solid #4CAF50;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .view-students-container img:hover {
   transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Delete Button Styling */
 .view-students-container .delete-button {
-  padding: 8px 16px;
+  padding: 10px 20px;
   background-color: #f44336;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .view-students-container .delete-button:hover {
   background-color: #d32f2f;
+  transform: scale(1.05);
 }
 
+/* Keyframes for Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -88,16 +110,18 @@
   }
 }
 
+/* General Button Styling */
 .delete-button {
   background-color: #ff4d4d;
-  color: white;
+  /* color: white; */
   border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
+  padding: 12px 20px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .delete-button:hover {
   background-color: #ff1a1a;
+  transform: scale(1.05);
 }

@@ -1,13 +1,14 @@
 /* General container styles */
 .view-books-container,
 .issued-books-container {
-  padding: 20px;
-  max-width: 800px;
-  margin: 20px auto;
-  background-color: #ffffff;
+  padding: 25px;
+  max-width: 900px;
+  margin: 25px auto;
+  background: linear-gradient(to bottom right, #ffffff, #f9f9f9);
   border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.8s ease-in-out;
 }
 
 /* List styles */
@@ -19,10 +20,13 @@ ul {
 li {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 20px;
+  padding-bottom: 25px;
+  transition: background-color 0.3s ease;
 }
+
+
 
 li:last-child {
   border-bottom: none;
@@ -34,22 +38,51 @@ img {
   object-fit: cover;
   margin-right: 20px;
   border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Issue Button */
 .issue-button {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 25px; 
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
   margin-top: 10px;
-}
+  display: inline-block; 
+  text-align: center; }
 
 .issue-button:hover {
   background-color: #0056b3;
+  transform: scale(1.05);
 }
+
+.delete-button {
+  background-color: #ff4d4d; /* Default background color */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease; /* Added color transition */
+  display: inline-block;
+  text-align: center;
+}
+
+.delete-button:hover {
+  background-color: #ff1a1a; /* Background color on hover */
+   color: white; 
+  transform: scale(1.05);
+}
+
 
 .quantity-control {
   display: flex;
@@ -59,32 +92,36 @@ img {
 
 .quantity-control button {
   background-color: #f0f0f0;
-  border: 1px solid black;
-  padding: 5px 10px;
+  border: 1px solid #000;
+  padding: 7px 15px;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  color: #000; /* Set the color of the button text to black */
 }
 
 .quantity-control button:hover {
-  background-color: black;
+  background-color: #000;
+  color: #fff; 
+  transform: scale(1.1);
 }
 
 .quantity-control span {
-  margin: 0 10px;
+  margin: 0 15px;
   font-weight: bold;
 }
 
+/* Side panel for student details */
 .student-details-side-panel {
   position: fixed;
   top: 0;
   right: 0;
-  width: 300px;
+  width: 350px;
   height: 100%;
   background-color: #ffffff;
-  border-left: 1px solid #e0e0e0;
-  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  border-left: 1px solid #e0e0e0; 
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
   overflow-y: auto;
@@ -98,17 +135,18 @@ img {
 .close-button {
   background-color: transparent;
   border: none;
-  font-size: 1.5rem;
+  font-size: 2rem;
   cursor: pointer;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 15px;
+  right: 15px;
   color: #333;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .close-button:hover {
   color: #000;
+  transform: rotate(90deg);
 }
 
 /* Modal styles */
@@ -118,7 +156,7 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -127,11 +165,12 @@ img {
 
 .modal-content {
   background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   width: 90%;
-  max-width: 500px;
+  max-width: 550px;
+  animation: zoomIn 0.5s ease-in-out;
 }
 
 .modal-header,
@@ -143,16 +182,16 @@ img {
 
 .modal-header {
   border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 10px;
+  padding-bottom: 15px;
 }
 
 .modal-footer {
   border-top: 1px solid #e0e0e0;
-  padding-top: 10px;
+  padding-top: 15px;
 }
 
 .modal-title {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
@@ -160,14 +199,15 @@ img {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 25px;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .modal-button:hover {
   background-color: #0056b3;
+  transform: scale(1.05);
 }
 
 .modal-button.cancel {
@@ -176,4 +216,25 @@ img {
 
 .modal-button.cancel:hover {
   background-color: #5a6268;
+}
+
+/* Keyframes for Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

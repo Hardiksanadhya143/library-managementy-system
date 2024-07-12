@@ -1,53 +1,123 @@
+/* AddBooksPage.css */
+
+/* Container styles */
 .add-book-container {
   max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  height: 100vh; /* Full viewport height */
-  overflow-y: auto; /* Enable vertical scroll */
+  margin: 50px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.add-book-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Heading styles */
+.add-book-container h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Form group styles */
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 .form-group label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+  font-family: 'Roboto', sans-serif;
 }
 
-.form-group input {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.error {
-  color: red;
-  font-size: 12px;
-}
-
-.success-message {
-  color: green;
-  font-size: 14px;
-}
-
-button {
-  display: block;
+/* Input styles */
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="file"] {
   width: 100%;
   padding: 10px;
-  border: none;
-  background-color: #4CAF50;
-  color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
   font-size: 16px;
-  cursor: pointer;
-  border-radius: 4px;
-  margin-top: 20px;
+  font-family: 'Roboto', sans-serif;
+  transition: border-color 0.3s ease;
 }
 
-button:hover {
-  background-color: #45a049;
+.form-group input[type="text"]:focus,
+.form-group input[type="date"]:focus,
+.form-group input[type="file"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Submit button styles */
+button[type="submit"] {
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+button[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+/* Error message styles */
+.error {
+  color: #ff4d4d;
+  margin-top: 8px;
+  font-size: 14px;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Success message styles */
+.success-message {
+  margin-top: 20px;
+  color: #28a745;
+  font-size: 18px;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in-out;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  padding: 20px;
+  border: 1px solid #28a745;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* FadeIn animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
